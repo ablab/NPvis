@@ -1,0 +1,45 @@
+{% load static %}
+
+<html>
+    <head>
+        <title>NPvis</title>
+	<link rel="stylesheet" href="{% static 'css/npvis.css' %}">
+    </head>
+    <body>
+	<header class="header">
+		<p>NPvis</p> 
+	</header>
+
+	<main class="main-content">
+		<div class="content-cent">
+		<section class="upload-sec">
+			<h1>NPvis</h1>
+			<form method="POST" class="upload-form"> {% csrf_token %}
+				<div class="oneline">
+					<p class="p-form-input">Spectrum:</p>
+					<div class="upload-file">
+						<button class="upload btn"> Upload </button>
+						<div class="upload-input"> No file chosen </div>
+						<input type="file" name="inputSpectrum" required="" id="id_inputSpectrum">
+					</div>
+				</div>
+				<div class="oneline">
+					<p class="p-form-input">Structure:</p>
+					<div class="upload-file">
+						<button class="upload btn"> Upload </button>
+						<div class="upload-input"> No file chosen </div>
+						<input type="file" name="inputStructure" required="" id="id_inputStructure">
+					</div>
+				</div>
+				<button type="submit" class="submit btn">SUBMIT</button>
+			</form>
+		</section>
+		</div>
+		
+		<div class="content-cent">
+		<section class="vis-sec">
+		</section>
+		</div>
+	</main>
+    </body>
+</html>
