@@ -14,7 +14,7 @@
 		<div class="content-cent">
 		<section class="upload-sec">
 			<h1>NPvis</h1>
-			<form method="POST" class="upload-form"> {% csrf_token %}
+			<form method="POST" class="upload-form" enctype="multipart/form-data"> {% csrf_token %}
 				<div class="oneline">
 					<p class="p-form-input">Spectrum:</p>
 					<div class="upload-file">
