@@ -128,3 +128,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DATA_PATH="/home/olga/CAB/NPvis/data/webser"
+NPVIS_PATH="/home/olga/CAB/NPvis/dereplicator/visualization/Lorikeet-modified/"
