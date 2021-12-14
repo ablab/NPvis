@@ -4,7 +4,6 @@ from npvis.settings import DATA_PATH
 from .forms import UploadSpectStructForm
 from .run_app import run_npvis
 
-
 def readFile(in_file, out_filename):
     with open(out_filename, "wb") as fw:
         for chunk in in_file.chunks():
@@ -22,7 +21,8 @@ def handle_form(request):
 
 # Create your views here.
 def main_page(request):
+    script_str = ""
     if request.method == "POST":
         handle_form(request)
-        run_npvis(os.path.join(DATA_PATH, 'Spectrum.ann'), os.path.join(DATA_PATH, 'Structure.mol'))
-    return render(request, 'npvis_app/main_page.html', {})
+        script_str = run_npvis(os.path.join(DATA_PATH, 'Spectrum.ann'), os.path.join(DATA_PATH, 'Structure.mol'))
+    return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str})
