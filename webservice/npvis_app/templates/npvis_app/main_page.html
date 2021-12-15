@@ -37,16 +37,16 @@
 					<p class="p-form-input">Spectrum:</p>
 					<div class="upload-file">
 						<button class="upload btn"> Upload </button>
-						<div class="upload-input"> No file chosen </div>
-						<input type="file" name="inputSpectrum" required="" id="id_inputSpectrum">
+						<div class="upload-input"> Choose file in mgf format... </div>
+						<input type="file" name="inputSpectrum" required="" id="id_inputSpectrum" onchange="changeFileName(this)">
 					</div>
 				</div>
 				<div class="oneline">
 					<p class="p-form-input">Structure:</p>
 					<div class="upload-file">
 						<button class="upload btn"> Upload </button>
-						<div class="upload-input"> No file chosen </div>
-						<input type="file" name="inputStructure" required="" id="id_inputStructure">
+						<div class="upload-input"> Choose file in mol format... </div>
+						<input type="file" name="inputStructure" required="" id="id_inputStructure" onchange="changeFileName(this)">
 					</div>
 				</div>
 				<button type="submit" class="submit btn">SUBMIT</button>
@@ -65,6 +65,7 @@
 	        {{npvis_script}}
 	    {% endautoescape %}
 	</script>
+	<script src="{%  static 'js/uploadFile.js' %}"></script>
 
     </body>
 </html>
