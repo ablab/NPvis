@@ -15,7 +15,7 @@ def handle_form(request):
     print(request.FILES)
     print(request.POST)
     if form.is_valid():
-        readFile(request.FILES['inputSpectrum'], os.path.join(DATA_PATH, 'Spectrum.ann'))
+        readFile(request.FILES['inputSpectrum'], os.path.join(DATA_PATH, 'Spectrum.mgf'))
         readFile(request.FILES['inputStructure'], os.path.join(DATA_PATH, 'Structure.mol'))
 
 
@@ -24,5 +24,5 @@ def main_page(request):
     script_str = ""
     if request.method == "POST":
         handle_form(request)
-        script_str = run_npvis(os.path.join(DATA_PATH, 'Spectrum.ann'), os.path.join(DATA_PATH, 'Structure.mol'))
+        script_str = run_npvis(os.path.join(DATA_PATH, 'Spectrum.mgf'), os.path.join(DATA_PATH, 'Structure.mol'))
     return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str})
