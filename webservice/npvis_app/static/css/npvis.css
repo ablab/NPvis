@@ -30,14 +30,6 @@ body {
        text-align: center;	
 }
 
-.content-cent {
-   width: 100%;
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   margin: 0;
-}
-
 .vis-sec {
    height: 670px;
    width: 1200px;
@@ -47,8 +39,8 @@ body {
 
 .oneline {
     padding-bottom: 5px;
-    display: grid;
-    grid-template-columns: 170px 600px;
+    display: flex;
+    /* grid-template-columns: auto auto;*/
 }
 
 .upload-file {
@@ -62,10 +54,6 @@ body {
 .upload-file > button{
     float: right;
     width: 8em;            /* example */
-}
-
-.submit {
-   float: right;
 }
 
 .upload-file input[type=file]{
@@ -86,7 +74,11 @@ body {
     background: #E5E5E5;
     padding-left: 8px;
     cursor: pointer;
-    font-family: Arial;
+
+    font-family: Roboto;
+    font-size: 16px;
+    line-height: 21px;
+    color: #585757;
 }
 
 .btn {
@@ -99,8 +91,156 @@ body {
     background: #224FC4;
 }
 
+.wrapper {
+    padding-bottom: 10px;
+}
 .p-form-input {
    font-weight: bold;
    font-size: 24px;
    margin: 0px;
+}
+
+
+.main-content {
+    position: relative;
+    top: 50px;
+    width: 100%;
+    margin: 0;
+}
+
+.content-input-wrapper {
+    position: fixed;
+    width: 350px;
+    right: 0px;
+    height: 100%;
+    border-left: 2px solid #C4C4C4;
+    padding: 10px;
+    background: white;
+    z-index: 2;
+}
+
+.content-vis-wrapper {
+   width: calc(100% - 375px);
+   top: 50px;
+   align-items: center;
+   justify-content: center;
+   margin: 0;
+}
+
+.fl_label {
+    margin: 0;
+    margin-left: 5px;
+}
+
+.input-section {
+    margin-bottom: 40px;
+}
+
+.right-align {
+    float: right;
+}
+
+.small-label {
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.submit {
+   float: right;
+   font-size: 24px;
+   padding: 5px;
+   padding-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.input-section > h1 {
+    color: #585757;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    line-height: 28px;
+    font-style: normal;
+    font-family: Roboto;
+}
+.input-section > p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: black;
+}
+
+.custom-select {
+  position: relative;
+  padding-right: 10px;
+  margin-bottom: 10px;
+}
+
+.custom-select select {
+  display: none;
+}
+
+.select-selected {
+    background-color: #E5E5E5;
+    height: 20px;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 8px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #000 transparent transparent transparent;
+}
+
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #000 transparent;
+  top: 8px;
+}
+
+.select-items div,.select-selected {
+    padding-left: 8px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 21px;
+    color: #585757;
+}
+
+.select-items {
+  position: absolute;
+  background-color: #E5E5E5;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.custom-input {
+    background-color: #E5E5E5;
+    width: 100px;
+    border-width: 0px;
 }

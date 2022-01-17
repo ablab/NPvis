@@ -25,38 +25,87 @@
     </head>
     <body>
 	<header class="header">
-		<p>NPvis</p> 
+		<p>NPvis</p>
 	</header>
 
 	<main class="main-content">
-		<div class="content-cent">
-		<section class="upload-sec">
-			<h1>NPvis</h1>
+		<div class="content-input-wrapper">
+        <div class="wrapper">
+            <button class="btn right-align small-label">Load Sample Data</button>
+		</div>
+            <section class="upload-sec">
 			<form method="POST" class="upload-form" enctype="multipart/form-data"> {% csrf_token %}
-				<div class="oneline">
-					<p class="p-form-input">Spectrum:</p>
+				<div class="input-section">
+                    <h1>Mode</h1>
+                    <div class="custom-select">
+                        <select id="id_mode_type" name="mode_type">
+                            <option value="PNPmd"><p>PNP with modification</p></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-section">
+					<h1>MS/MS data</h1>
+                    <p>Input type:</p>
+                    <div class="custom-select">
+                        <select id="id_ms_input_type" name="ms_input_type">
+                            <option value="mgf"><p>MGF</p></option>
+                        </select>
+                    </div>
+
+                    <p class="p-form-input">MGF file:</p>
 					<div class="upload-file">
 						<button class="upload btn"> Upload </button>
 						<div class="upload-input"> Choose file in mgf format... </div>
 						<input type="file" name="inputSpectrum" required="" id="id_inputSpectrum" onchange="changeFileName(this)" title = "Choose file in mgf format...">
 					</div>
 				</div>
-				<div class="oneline">
-					<p class="p-form-input">Structure:</p>
+
+				<div class="input-section">
+					<h1>Chemical Structure</h1>
+                    <p>Input type:</p>
+                    <div class="custom-select">
+                        <select id="id_struct_input_type" name="struct_input_type">
+                            <option value="mol"><p>mol</p></option>
+                            <option value="smiles"><p>SMILES</p></option>
+                        </select>
+                    </div>
+
+                    <p class="p-form-input">Mol file:</p>
 					<div class="upload-file">
 						<button class="upload btn"> Upload </button>
 						<div class="upload-input"> Choose file in mol format... </div>
 						<input type="file" name="inputStructure" required="" id="id_inputStructure" onchange="changeFileName(this)"  title = "Choose file in mol format...">
 					</div>
 				</div>
+
+                <div class="input-section">
+                    <h1>Error tolerance threshold</h1>
+                    <p>Error type:</p>
+                    <div class="custom-select">
+                        <select id="id_error_type" name="error_type">
+                            <option value="absolute"><p>Absolute</p></option>
+                            <option value="relative"><p>Relative</p></option>
+                        </select>
+                    </div>
+
+                    <p>Error tolerance threshold:</p>
+                    <div class="oneline">
+                        <input class="custom-input" type="number" value="1">
+                        <div id="error_thr_unit"><p class="fl_label">Da</p></div>
+                    </div>
+                </div>
+
 				<button type="submit" class="submit btn">SUBMIT</button>
 			</form>
 		</section>
 		</div>
 		
-		<div class="content-cent">
+		<div class="content-vis-wrapper">
 		<section class="vis-sec" id="lorikeet">
 		</section>
+
+        <button class="btn right-align small-label">Download report</button>
 		</div>
 	</main>
 	
@@ -66,6 +115,7 @@
 	    {% endautoescape %}
 	</script>
 	<script src="{%  static 'js/uploadFile.js' %}"></script>
+    <script src="{%  static 'js/dropDown.js' %}"></script>
 
     </body>
 </html>
