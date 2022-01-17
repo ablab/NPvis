@@ -119,6 +119,10 @@ body {
     z-index: 2;
 }
 
+.close-input-button:checked ~ .content-input-wrapper {
+    display: none;
+}
+
 .content-vis-wrapper {
    width: calc(100% - 375px);
    top: 50px;
@@ -127,9 +131,46 @@ body {
    margin: 0;
 }
 
+.close-input-button:checked ~ .content-vis-wrapper {
+    width: 100%;
+}
+
 .fl_label {
     margin: 0;
     margin-left: 5px;
+}
+
+.close-input-button-label {
+    position: fixed;
+    top:50px;
+    margin: 0;
+    padding: 0;
+    right: 340px;
+    z-index: 100;
+    background-color: white;
+    border: none;
+    font-size: 36px;
+    font-weight: bold;
+    color: #C4C4C4;
+}
+
+.close-input-button {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+
+.close-input-button:checked + .close-input-button-label .close-input-button-icon{
+    display: none;
+}
+
+.close-input-button:checked + .close-input-button-label:after {
+    content: "\000AB";
+}
+
+.close-input-button:checked + .close-input-button-label {
+    right: 10px;
 }
 
 .input-section {
