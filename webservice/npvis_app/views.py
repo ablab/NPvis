@@ -1,8 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 import os
 from npvis.settings import DATA_PATH
 from .forms import UploadSpectStructForm
 from .run_app import run_npvis
+from .run_app import run_npvis_inline
 
 def readFile(in_file, out_filename):
     with open(out_filename, "wb") as fw:
@@ -26,3 +28,11 @@ def main_page(request):
         handle_form(request)
         script_str = run_npvis(os.path.join(DATA_PATH, 'Spectrum.mgf'), os.path.join(DATA_PATH, 'Structure.mol'))
     return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str})
+
+
+def downloadreport(request):
+    file_path = run_npvis_inline(os.path.join(DATA_PATH, 'Spectrum.mgf'), os.path.join(DATA_PATH, 'Structure.mol'))
+    with open(file_path, 'rb') as fh:
+        response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+        response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+        return response
