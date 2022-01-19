@@ -2,31 +2,26 @@ from django.http import HttpResponse
 from django.shortcuts import render
 import os
 from npvis.settings import DATA_PATH
-from .forms import UploadSpectStructForm
 from .run_app import run_npvis
 from .run_app import run_npvis_inline
-
-def readFile(in_file, out_filename):
-    with open(out_filename, "wb") as fw:
-        for chunk in in_file.chunks():
-            fw.write(chunk)
-
+from .utils import readFile
+from .input_processing import process_structure_input
 
 def handle_form(request):
-    form = UploadSpectStructForm(request.POST, request.FILES)
     print(request.FILES)
     print(request.POST)
-    if form.is_valid():
-        readFile(request.FILES['inputSpectrum'], os.path.join(DATA_PATH, 'Spectrum.mgf'))
-        readFile(request.FILES['inputStructure'], os.path.join(DATA_PATH, 'Structure.mol'))
+    readFile(request.FILES['inputSpectrum'], os.path.join(DATA_PATH, 'Spectrum.mgf'))
+    struct_in = process_structure_input(request)
+
+    return os.path.join(DATA_PATH, 'Spectrum.mgf'), struct_in
 
 
 # Create your views here.
 def main_page(request):
     script_str = ""
     if request.method == "POST":
-        handle_form(request)
-        script_str = run_npvis(os.path.join(DATA_PATH, 'Spectrum.mgf'), os.path.join(DATA_PATH, 'Structure.mol'))
+        spect_in, struct_in = handle_form(request)
+        script_str = run_npvis(spect_in, struct_in)
     return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str})
 
 
