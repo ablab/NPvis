@@ -79,12 +79,14 @@
                         </select>
                     </div>
 
-                    <p class="p-form-input">Mol file:</p>
-					<div class="upload-file">
+                    <p class="p-form-input" id="struct-input-file-header-id">Mol file:</p>
+					<div id="struct-upload-file-id">
+                    <div class="upload-file">
 						<button class="upload btn"> Upload </button>
 						<div class="upload-input"> Choose file in mol format... </div>
 						<input type="file" name="inputStructure" required="" id="id_inputStructure" onchange="changeFileName(this)"  title = "Choose file in mol format...">
 					</div>
+                    </div>
 				</div>
 
                 <div class="input-section">
@@ -124,6 +126,7 @@
 	</script>
 	<script src="{%  static 'js/uploadFile.js' %}"></script>
     <script src="{%  static 'js/dropDown.js' %}"></script>
+    <script src="{%  static 'js/changeInputType.js' %}"></script>
 
     </body>
 </html>

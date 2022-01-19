@@ -39,7 +39,7 @@ function lookAfterSelectElem() {
                         break;
                     }
                 }
-                updateForms();
+                updateStructureInputType();
                 h.click();
             });
             b.appendChild(c);

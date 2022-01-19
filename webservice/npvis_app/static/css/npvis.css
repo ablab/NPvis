@@ -215,3 +215,10 @@ body {
 
     color: black;
 }
+
+.custom-input-text {
+    width: 100%;
+    background-color: #E5E5E5;
+    height: 20px;
+    border-width: 0;
+}
