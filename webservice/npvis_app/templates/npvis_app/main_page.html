@@ -57,16 +57,19 @@
                     <p>Input type:</p>
                     <div class="custom-select">
                         <select id="id_ms_input_type" name="ms_input_type">
-                            <option value="mgf"><p>MGF</p></option>
+                            <option value="mgf">MGF</option>
+                            <option value="gusi">GNPS USI</option>
                         </select>
                     </div>
 
-                    <p class="p-form-input">MGF file:</p>
-					<div class="upload-file">
+                    <p class="p-form-input" id="spect-input-file-header-id">MGF file:</p>
+					<div id="spect-upload-file-id">
+                    <div class="upload-file">
 						<button class="upload btn"> Upload </button>
 						<div class="upload-input"> Choose file in mgf format... </div>
 						<input type="file" name="inputSpectrum" required="" id="id_inputSpectrum" onchange="changeFileName(this)" title = "Choose file in mgf format...">
 					</div>
+                    </div>
 				</div>
 
 				<div class="input-section">

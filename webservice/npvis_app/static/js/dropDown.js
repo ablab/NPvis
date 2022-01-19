@@ -39,6 +39,7 @@ function lookAfterSelectElem() {
                         break;
                     }
                 }
+                updateSpectrumInputType();
                 updateStructureInputType();
                 h.click();
             });
