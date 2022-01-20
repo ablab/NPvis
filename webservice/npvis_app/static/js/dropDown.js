@@ -4,10 +4,14 @@ function lookAfterSelectElem() {
     x = document.getElementsByClassName("custom-select");
     for (i = 0; i < x.length; i++) {
         selsel = x[i].getElementsByClassName("select-selected");
+        selElmnt = x[i].getElementsByTagName("select")[0];
+        console.log("Selected index: " + selElmnt.selectedIndex)
+
         if (selsel.length != 0) {
+            selsel[0].innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
             continue;
         }
-        selElmnt = x[i].getElementsByTagName("select")[0];
+
         /*for each element, create a new DIV that will act as the selected item:*/
         a = document.createElement("DIV");
         a.setAttribute("class", "select-selected");
@@ -23,7 +27,7 @@ function lookAfterSelectElem() {
             c.innerHTML = selElmnt.options[j].innerHTML;
             c.addEventListener("click", function (e) {
                 /*when an item is clicked, update the original select box,
-                 and the selected item:*/
+             and the selected item:*/
                 var y, i, k, s, h;
                 s = this.parentNode.parentNode.getElementsByTagName("select")[0];
                 h = this.parentNode.previousSibling;
