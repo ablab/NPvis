@@ -6,14 +6,16 @@ from .run_app import run_npvis
 from .run_app import run_npvis_inline
 from .utils import readFile
 from .input_processing import process_structure_input
+from .input_processing import process_spectrum_input
 
 def handle_form(request):
     print(request.FILES)
     print(request.POST)
-    readFile(request.FILES['inputSpectrum'], os.path.join(DATA_PATH, 'Spectrum.mgf'))
+
+    spectrum_in = process_spectrum_input(request)
     struct_in = process_structure_input(request)
 
-    return os.path.join(DATA_PATH, 'Spectrum.mgf'), struct_in
+    return spectrum_in, struct_in
 
 
 # Create your views here.

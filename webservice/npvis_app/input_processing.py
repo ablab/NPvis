@@ -3,6 +3,19 @@ import os
 from .utils import readFile
 from npvis.settings import DATA_PATH
 
+def process_spectrum_input(request):
+    outfile = os.path.join(DATA_PATH, 'Spectrum.mgf')
+    if request.POST['ms_input_type'] == "mgf":
+        readFile(request.FILES['inputSpectrum'], outfile)
+    elif request.POST['ms_input_type'] == "gusi":
+        gusi = request.POST['inputSpectrum']
+        gusi.replace(':', '%3A')
+        gusi_url = "https://metabolomics-usi.ucsd.edu/json/?usi1=" + gusi
+        cmd = f'wget {gusi_url} -O {os.path.join(DATA_PATH, "Spectrum.json")}'
+        os.system(cmd)
+
+    return outfile
+
 def process_structure_input(request):
     outfile = os.path.join(DATA_PATH, 'Structure.mol')
     if request.POST['struct_input_type'] == 'smiles':
