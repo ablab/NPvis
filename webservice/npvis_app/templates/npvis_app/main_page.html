@@ -33,14 +33,11 @@
 		<input type="checkbox" class="close-input-button" id="close-input-button-id">
         <label for="close-input-button-id" class="close-input-button-label">
             <span class="close-input-button-icon">
-                &raquo;
+                &laquo;
             </span>
         </label>
 
         <div class="content-input-wrapper">
-        <div class="wrapper">
-            <button class="btn right-align small-label">Load Sample Data</button>
-		</div>
             <section class="upload-sec">
 			<form method="POST" class="upload-form" enctype="multipart/form-data"> {% csrf_token %}
 				<div class="input-section">
@@ -109,17 +106,19 @@
                     </div>
                 </div>
 
+                <div class="wrapper">
+                    <button class="btn right-align small-label">Load Sample Data</button>
+                </div>
+
 				<button type="submit" class="submit btn">SUBMIT</button>
 			</form>
 		</section>
-		</div>
+        </div>
 		
 		<div class="content-vis-wrapper">
-		<section class="vis-sec" id="lorikeet">
-		</section>
-
-        <button type="submit" class="btn right-align small-label" onclick="location.href='{% url 'downloadreport' %}'">Download report</button>
-		</div>
+		    <section class="vis-sec" id="lorikeet"></section>
+            <button type="submit" class="btn right-align small-label" onclick="location.href='{% url 'downloadreport' %}'">Download report</button>
+        </div>
 	</main>
 	
 	<script type="text/javascript">

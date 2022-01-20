@@ -111,9 +111,10 @@ body {
 .content-input-wrapper {
     position: fixed;
     width: 350px;
-    right: 0px;
+    left: 0;
     height: 100%;
     border-left: 2px solid #C4C4C4;
+    border-right: 2px solid #C4C4C4;
     padding: 10px;
     background: white;
     z-index: 2;
@@ -124,6 +125,8 @@ body {
 }
 
 .content-vis-wrapper {
+   position: fixed;
+   left: 375px;
    width: calc(100% - 375px);
    top: 50px;
    align-items: center;
@@ -132,6 +135,7 @@ body {
 }
 
 .close-input-button:checked ~ .content-vis-wrapper {
+    left: 0;
     width: 100%;
 }
 
@@ -145,7 +149,7 @@ body {
     top:50px;
     margin: 0;
     padding: 0;
-    right: 340px;
+    left: 340px;
     z-index: 100;
     background-color: white;
     border: none;
@@ -166,21 +170,24 @@ body {
 }
 
 .close-input-button:checked + .close-input-button-label:after {
-    content: "\000AB";
+    content: "\000BB";
 }
 
 .close-input-button:checked + .close-input-button-label {
-    right: 10px;
+    left: 10px;
 }
 
 .input-section {
     margin-bottom: 40px;
 }
 
+.left-align {
+    float: left;
+}
+
 .right-align {
     float: right;
 }
-
 .small-label {
     font-weight: normal;
     font-size: 18px;
@@ -189,10 +196,12 @@ body {
 .submit {
    float: right;
    font-size: 24px;
+    width: 100%;
    padding: 5px;
    padding-bottom: 30px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-top: 10px;
 }
 
 .input-section > h1 {
