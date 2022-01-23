@@ -38,6 +38,7 @@ body {
 }
 
 .oneline {
+    padding-top: 10px;
     padding-bottom: 5px;
     display: flex;
     /* grid-template-columns: auto auto;*/
@@ -230,4 +231,9 @@ body {
     background-color: #E5E5E5;
     height: 20px;
     border-width: 0;
+}
+
+.input-name-p {
+    margin: 0;
+    margin-right: 5px;
 }
