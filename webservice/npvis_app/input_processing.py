@@ -1,10 +1,13 @@
 import os
 
 from .utils import readFile
+from .utils import get_or_create_session
 from npvis.settings import DATA_PATH
 
 def process_spectrum_input(request):
-    outfile = os.path.join(DATA_PATH, 'Spectrum.mgf')
+    user_session = get_or_create_session(request)
+
+    outfile = os.path.join(DATA_PATH, user_session, 'Spectrum.mgf')
     if request.POST['ms_input_type'] == "mgf":
         readFile(request.FILES['inputSpectrum'], outfile)
     elif request.POST['ms_input_type'] == "gusi":
@@ -17,7 +20,9 @@ def process_spectrum_input(request):
     return outfile
 
 def process_structure_input(request):
-    outfile = os.path.join(DATA_PATH, 'Structure.mol')
+    user_session = get_or_create_session(request)
+
+    outfile = os.path.join(DATA_PATH, user_session, 'Structure.mol')
     if request.POST['struct_input_type'] == 'smiles':
         smiles_str = request.POST['inputStructure']
         cmd = f'molconvert  mol:V3 -s "{smiles_str}" > {outfile}'
