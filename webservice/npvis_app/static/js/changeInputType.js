@@ -10,7 +10,7 @@ function updateSpectrumInputType() {
             '           onChange="changeFileName(this)" title="Choose file in mgf format...">' +
             '</div>' +
             '<div class="oneline">' +
-            '    <p class="input-name-p">Scan ID:</p> <input type="number" class="custom-input" value="1" id="id_inputScanID">' +
+            '    <p class="input-name-p">Scan ID:</p> <input type="number" class="custom-input" value="0" id="id_inputScanID" name="inputScanId">' +
             '</div>';
     } else if (elem.value === 'gusi') {
         document.getElementById("spect-input-file-header-id").innerHTML = "GNPS USI:"

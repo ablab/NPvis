@@ -13,10 +13,10 @@ def handle_form(request):
     print(request.FILES)
     print(request.POST)
 
-    spectrum_in = process_spectrum_input(request)
+    spectrum_in, scanId = process_spectrum_input(request)
     struct_in = process_structure_input(request)
 
-    return spectrum_in, struct_in
+    return spectrum_in, scanId, struct_in
 
 
 # Create your views here.
@@ -24,8 +24,9 @@ def main_page(request):
     script_str = ""
     if request.method == "POST":
         clear_session_dir(request)
-        spect_in, struct_in = handle_form(request)
-        script_str = run_npvis(spect_in, struct_in)
+        spect_in, scanId, struct_in = handle_form(request)
+        print(spect_in, scanId, struct_in)
+        script_str = run_npvis(spect_in, scanId, struct_in)
 
     return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str})
 

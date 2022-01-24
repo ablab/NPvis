@@ -8,8 +8,10 @@ def process_spectrum_input(request):
     user_session = get_or_create_session(request)
 
     outfile = os.path.join(DATA_PATH, user_session, 'Spectrum.mgf')
+    scanID = 0
     if request.POST['ms_input_type'] == "mgf":
         readFile(request.FILES['inputSpectrum'], outfile)
+        scanID = request.POST["inputScanId"]
     elif request.POST['ms_input_type'] == "gusi":
         gusi = request.POST['inputSpectrum']
         gusi.replace(':', '%3A')
@@ -17,7 +19,7 @@ def process_spectrum_input(request):
         cmd = f'wget {gusi_url} -O {os.path.join(DATA_PATH, "Spectrum.json")}'
         os.system(cmd)
 
-    return outfile
+    return outfile, scanID
 
 def process_structure_input(request):
     user_session = get_or_create_session(request)
