@@ -34,3 +34,12 @@ def process_structure_input(request):
         readFile(request.FILES['inputStructure'], outfile)
 
     return outfile
+
+
+def process_error_thr(request):
+    error_thr = float(request.POST['error_thr'])
+    error_type = request.POST['error_type']
+
+    print(error_thr, error_type)
+
+    return error_thr, error_type
