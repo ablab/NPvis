@@ -3,6 +3,7 @@ import os
 from .utils import readFile
 from .utils import get_or_create_session
 from npvis.settings import DATA_PATH
+from npvis.settings import NPVIS_SCRIPT_PATH
 
 def process_spectrum_input(request):
     user_session = get_or_create_session(request)
@@ -16,10 +17,12 @@ def process_spectrum_input(request):
         scanID = request.POST["inputScanId"]
     elif request.POST['ms_input_type'] == "gusi":
         gusi = request.POST['inputSpectrum']
-        gusi.replace(':', '%3A')
-        gusi_url = "https://metabolomics-usi.ucsd.edu/json/?usi1=" + gusi
-        cmd = f'wget {gusi_url} -O {os.path.join(DATA_PATH, "Spectrum.json")}'
+        #gusi.replace(':', '%3A')
+        #gusi_url = "https://metabolomics-usi.ucsd.edu/json/?usi1=" + gusi
+        #cmd = f'wget {gusi_url} -O {os.path.join(DATA_PATH, "Spectrum.json")}'
+        cmd = f'python3 {os.path.join(NPVIS_SCRIPT_PATH, "usi2mgf.py")} --usi {gusi} > {outfile}'
         os.system(cmd)
+
     return outfile, scanID
 
 def process_structure_input(request):

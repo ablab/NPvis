@@ -130,3 +130,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DATA_PATH="/home/olga/CAB/NPvis/data/webser"
 NPVIS_PATH="/home/olga/CAB/NPvis/dereplicator/visualization/Lorikeet-modified/"
 PRINT_SCORE_PATH="/home/olga/CAB/NPvis/dereplicator/cycloquest_minimal/bin/"
+NPVIS_SCRIPT_PATH="/home/olga/CAB/NPvis/NPvis/aux_scripts/"
