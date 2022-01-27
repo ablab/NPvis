@@ -10,6 +10,8 @@ def process_spectrum_input(request):
     outfile = os.path.join(DATA_PATH, user_session, 'Spectrum.mgf')
     scanID = 0
     if request.POST['ms_input_type'] == "mgf":
+        filename = request.FILES['inputSpectrum'].name
+        outfile = os.path.join(DATA_PATH, user_session, 'Spectrum.' + filename.split('.')[-1])
         readFile(request.FILES['inputSpectrum'], outfile)
         scanID = request.POST["inputScanId"]
     elif request.POST['ms_input_type'] == "gusi":
@@ -18,7 +20,6 @@ def process_spectrum_input(request):
         gusi_url = "https://metabolomics-usi.ucsd.edu/json/?usi1=" + gusi
         cmd = f'wget {gusi_url} -O {os.path.join(DATA_PATH, "Spectrum.json")}'
         os.system(cmd)
-
     return outfile, scanID
 
 def process_structure_input(request):

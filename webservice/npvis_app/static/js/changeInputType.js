@@ -1,11 +1,10 @@
 function updateSpectrumInputType() {
     var elem = document.getElementById("id_ms_input_type");
     if (elem.value === 'mgf') {
-        document.getElementById("spect-input-file-header-id").innerHTML = "MGF file:"
         document.getElementById("spect-upload-file-id").innerHTML =
             '<div class="upload-file">' +
             '    <button class="upload btn"> Upload</button>' +
-            '    <div class="upload-input"> Choose file in mgf format...</div>' +
+            '    <div class="upload-input"> Choose file...</div>' +
             '    <input type="file" name="inputSpectrum" required="" id="id_inputSpectrum"' +
             '           onChange="changeFileName(this)" title="Choose file in mgf format...">' +
             '</div>' +
@@ -13,7 +12,6 @@ function updateSpectrumInputType() {
             '    <p class="input-name-p">Scan ID:</p> <input type="number" class="custom-input" value="0" id="id_inputScanID" name="inputScanId">' +
             '</div>';
     } else if (elem.value === 'gusi') {
-        document.getElementById("spect-input-file-header-id").innerHTML = "GNPS USI:"
         document.getElementById("spect-upload-file-id").innerHTML =
                 '   <input type="text" class="custom-input-text" name="inputSpectrum" required="" id="id_inputSpectrum">';
     }
