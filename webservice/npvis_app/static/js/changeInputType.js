@@ -39,3 +39,12 @@ function updateStructureInputType() {
     lookAfterSelectElem();
 }
 
+function updateErrorType() {
+    var elem = document.getElementById("id_error_type")
+    if (elem.value === "absolute") {
+        document.getElementById("error_thr_unit").innerHTML = "<p class=\"fl_label\">Da</p>"
+    } else if (elem.value === "relative") {
+        document.getElementById("error_thr_unit").innerHTML = "<p class=\"fl_label\">ppm</p>"
+    }
+}
+

@@ -45,6 +45,7 @@ function lookAfterSelectElem() {
                 }
                 updateSpectrumInputType();
                 updateStructureInputType();
+                updateErrorType();
                 h.click();
             });
             b.appendChild(c);
