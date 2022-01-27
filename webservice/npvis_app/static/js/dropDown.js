@@ -43,9 +43,13 @@ function lookAfterSelectElem() {
                         break;
                     }
                 }
-                updateSpectrumInputType();
-                updateStructureInputType();
-                updateErrorType();
+                if (s.name == "ms_input_type") {
+                    updateSpectrumInputType();
+                } else if (s.name == "struct_input_type") {
+                    updateStructureInputType();
+                } else {
+                    updateErrorType();
+                }
                 h.click();
             });
             b.appendChild(c);

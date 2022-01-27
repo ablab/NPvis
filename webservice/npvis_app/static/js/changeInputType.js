@@ -13,7 +13,7 @@ function updateSpectrumInputType() {
             '</div>';
     } else if (elem.value === 'gusi') {
         document.getElementById("spect-upload-file-id").innerHTML =
-                '   <input type="text" class="custom-input-text" name="inputSpectrum" required="" id="id_inputSpectrum">';
+                '   <input type="text" class="custom-input-text" name="inputSpectrum" required="" id="id_inputSpectrum" placeholder="GNPS USI...">';
     }
 
     lookAfterSelectElem();
@@ -22,7 +22,6 @@ function updateSpectrumInputType() {
 function updateStructureInputType() {
     var elem = document.getElementById("id_struct_input_type");
     if (elem.value === 'mol') {
-        document.getElementById("struct-input-file-header-id").innerHTML = "Mol file:"
         document.getElementById("struct-upload-file-id").innerHTML =
             '<div class="upload-file">' +
             '    <button class="upload btn"> Upload</button>' +
@@ -31,9 +30,8 @@ function updateStructureInputType() {
             '           onChange="changeFileName(this)" title="Choose file in mol format...">' +
             '</div>';
     } else if (elem.value === 'smiles') {
-        document.getElementById("struct-input-file-header-id").innerHTML = "SMILES string:"
         document.getElementById("struct-upload-file-id").innerHTML =
-                '   <input type="text" class="custom-input-text" name="inputStructure" required="" id="id_inputStructure">';
+                '   <input type="text" class="custom-input-text" name="inputStructure" required="" id="id_inputStructure" placeholder="SMILES string...">';
     }
 
     lookAfterSelectElem();

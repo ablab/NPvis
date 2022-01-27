@@ -51,7 +51,6 @@
 
                 <div class="input-section">
 					<h1>MS/MS data</h1>
-                    <p>Input type:</p>
                     <div class="custom-select">
                         <select id="id_ms_input_type" name="ms_input_type">
                             <option value="mgf">File(MGF/mzXML/mzML)</option>
@@ -73,16 +72,14 @@
 
 				<div class="input-section">
 					<h1>Chemical Structure</h1>
-                    <p>Input type:</p>
                     <div class="custom-select">
                         <select id="id_struct_input_type" name="struct_input_type">
-                            <option value="mol"><p>mol</p></option>
+                            <option value="mol"><p>File(MOL)</p></option>
                             <option value="smiles"><p>SMILES</p></option>
                         </select>
                     </div>
 
-                    <p class="p-form-input" id="struct-input-file-header-id">Mol file:</p>
-					<div id="struct-upload-file-id">
+                    <div id="struct-upload-file-id">
                     <div class="upload-file">
 						<button class="upload btn"> Upload </button>
 						<div class="upload-input"> Choose file in mol format... </div>
