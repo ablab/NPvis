@@ -13,9 +13,9 @@ function loadSampleData() {
     updateSpectrumInputType();
 
     var eleminSpec = document.getElementById("id_inputStructure");
-    eleminSpec.value = "[H]OC(=O)C([H])([H])C([H])([H])[C@@]1([H])N([H])C(=O)C([H])([H])C([H])(OC(=O)[C@@]([H])(N([H])C(=O)[C@]([H])(N([H])C(=O)[C@@]([H])(N([H])C(=O)[C@@]([H])(N([H])C(=O)C([H])(N([H])C(=O)[C@@]([H])(N([H])C1=O)C([H])(C([H])([H])[H])C([H])([H])[H])C([H])([H])C([H])(C([H])([H])[H])C([H])([H])[H])C([H])(C([H])([H])[H])C([H])([H])[H])C([H])([H])C(=O)OC([H])([H])[H])C([H])([H])C([H])(C([H])([H])[H])C([H])([H])[H])C([H])(C([H])([H])[H])C([H])([H])[H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])C([H])([H])[H]";
+    eleminSpec.value = "CCCCCCCC(CC(=O)NC(CC(C)C)C(=O)NC(CCC(=O)O)C(=O)NC1C(C)OC(=O)C(C(C)CC)NC(=O)C(CO)NC(=O)C(CC(C)C)NC(=O)C(CO)NC(=O)C(CC(C)C)NC(=O)C(C(C)CC)NC1=O)O";
 
     var eleminMS = document.getElementById("id_inputSpectrum");
-    eleminMS.value = "mzspec:GNPS:TASK-e026d6bd717144eaaa3745918a8276b5-spec/spec-00000.mgf:scan:1"
+    eleminMS.value = "mzspec:GNPS:GNPS-LIBRARY:accession:CCMSLIB00004679304"
     return false;
 }
