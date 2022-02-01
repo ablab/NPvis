@@ -39,13 +39,13 @@ def main_page(request):
     script_str = ""
     if request.method == "POST":
         clear_session_dir(request)
-        spect_in, scanId, struct_in, error_thr, error_type = handle_form(request)
+        spect_in, scanId, struct_in, error_thr, error_type, mode_type = handle_form(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
-        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, user_session)
+        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, user_session)
     if request.method == "GET" and ("gusi" in request.GET):
-        spect_in, scanId, struct_in, error_thr, error_type = process_get(request)
+        spect_in, scanId, struct_in, error_thr, error_type, mode_type = process_get(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
-        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, user_session)
+        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, user_session)
 
     return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str})
 

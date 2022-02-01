@@ -37,11 +37,13 @@ def handle_form(request):
     print(request.FILES)
     print(request.POST)
 
+    mode_type = request.POST["mode_type"]
+
     spectrum_in, scanId = process_spectrum_input(request)
     struct_in = process_structure_input(request)
     error_thr, error_type = process_error_thr(request)
 
-    return spectrum_in, scanId, struct_in, error_thr, error_type
+    return spectrum_in, scanId, struct_in, error_thr, error_type, mode_type
 
 
 def process_get(request):
@@ -50,6 +52,8 @@ def process_get(request):
 
     user_session = get_or_create_session(request)
     struct_in = os.path.join(DATA_PATH, user_session, 'Structure.mol')
+
+    mode_type = "PNPmd"
 
     process_smiles(smiles, struct_in)
 
@@ -67,7 +71,7 @@ def process_get(request):
     spect_in = os.path.join(DATA_PATH, user_session, 'Spectrum.mgf')
     process_gusi(gusi, spect_in)
 
-    return spect_in, scanId, struct_in, error_thr, error_type
+    return spect_in, scanId, struct_in, error_thr, error_type, mode_type
 
 
 def process_structure_input(request):

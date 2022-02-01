@@ -3,14 +3,16 @@ from npvis.settings import NPVIS_PATH
 from npvis.settings import PRINT_SCORE_PATH
 import os
 
-def run_npvis(in_spectrum, scanId, in_structure, error_thr, error_type, user_session):
+def run_npvis(in_spectrum, scanId, in_structure, error_thr, error_type, mode_type, user_session):
     out_ann = os.path.join(DATA_PATH, user_session, "psm.ann")
     out_vis = os.path.join(DATA_PATH, user_session, "vis.html")
 
     cmd = f'{PRINT_SCORE_PATH}/print_score -C {PRINT_SCORE_PATH}/../share/npdtools/ {in_spectrum} {in_structure} '
     cmd += " --ppm " if error_type == "relative" else ""
     cmd += f'--product_ion_thresh {error_thr} '
-    cmd += f'--print_matches --print_spectrum --blind_search --scan_num {scanId} > {out_ann}'
+    cmd += f'--print_matches --print_spectrum '
+    cmd += "--blind_search " if mode_type == "PNPmd" else ""
+    cmd += f'--scan_num {scanId} > {out_ann}'
     print(cmd)
     os.system(cmd)
 
