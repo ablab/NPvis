@@ -60,7 +60,7 @@ def process_get(request):
 
     if "errthr" in request.GET:
         error_thr = float(request.GET["errthr"])
-        
+
     if "errtype" in request.GET and request.GET["errtype"] == "ppm":
         error_type = "relative"
 

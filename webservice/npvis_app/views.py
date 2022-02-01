@@ -20,7 +20,7 @@ def main_page(request):
         spect_in, scanId, struct_in, error_thr, error_type = handle_form(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
         script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type)
-    if request.method == "GET":
+    if request.method == "GET" and ("gusi" in request.GET):
         spect_in, scanId, struct_in, error_thr, error_type = process_get(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
         script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type)
