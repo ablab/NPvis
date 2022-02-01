@@ -1,6 +1,9 @@
+import shutil
+
 from django.http import HttpResponse
 from django.shortcuts import render
 import os
+import time
 from npvis.settings import DATA_PATH
 from .run_app import run_npvis
 from .run_app import run_npvis_inline
@@ -12,8 +15,25 @@ from .input_processing import process_error_thr
 from .input_processing import handle_form
 from .input_processing import process_get
 
+def clear_unused_folders():
+    clearlist = []
+    for dirname in os.listdir(DATA_PATH):
+        dn = os.path.join(DATA_PATH, dirname)
+        if os.path.isdir(dn):
+            mtime = os.path.getmtime(dn)
+            ctime = time.time()
+            print("Modified time:",  (ctime - mtime)/60)
+            if (ctime - mtime)/60 > (7*24*60):
+                clearlist.append(dn)
+
+    for dn in clearlist:
+        shutil.rmtree(os.path.join(DATA_PATH, dn))
+
+
 # Create your views here.
 def main_page(request):
+    clear_unused_folders()
+
     user_session = get_or_create_session(request)
 
     script_str = ""
