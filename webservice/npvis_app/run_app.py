@@ -3,18 +3,21 @@ from npvis.settings import NPVIS_PATH
 from npvis.settings import PRINT_SCORE_PATH
 import os
 
-def run_npvis(in_spectrum, scanId, in_structure, error_thr, error_type):
+def run_npvis(in_spectrum, scanId, in_structure, error_thr, error_type, user_session):
+    out_ann = os.path.join(DATA_PATH, user_session, "psm.ann")
+    out_vis = os.path.join(DATA_PATH, user_session, "vis.html")
+
     cmd = f'{PRINT_SCORE_PATH}/print_score -C {PRINT_SCORE_PATH}/../share/npdtools/ {in_spectrum} {in_structure} '
     cmd += " --ppm " if error_type == "relative" else ""
     cmd += f'--product_ion_thresh {error_thr} '
-    cmd += f'--print_matches --print_spectrum --blind_search --scan_num {scanId} > {DATA_PATH}/psm.ann'
+    cmd += f'--print_matches --print_spectrum --blind_search --scan_num {scanId} > {out_ann}'
     print(cmd)
     os.system(cmd)
 
-    os.system(f'python2.7 {NPVIS_PATH}/visualize.py  --mol {in_structure}  --ann {DATA_PATH}/psm.ann -o {DATA_PATH}/vis.html')
+    os.system(f'python2.7 {NPVIS_PATH}/visualize.py  --mol {in_structure}  --ann {out_ann} -o {out_vis}')
     
     script_str = ""
-    with open(os.path.join(DATA_PATH, 'vis.html')) as f:
+    with open(out_vis) as f:
          add_line = False
          for line in f:
              if line == '<script type="text/javascript">\n':
@@ -30,11 +33,11 @@ def run_npvis(in_spectrum, scanId, in_structure, error_thr, error_type):
              
     return script_str
 
-def run_npvis_inline(in_spectrum, in_structure):
-    os.system(
-        f'{PRINT_SCORE_PATH}/print_score -C {PRINT_SCORE_PATH}/../share/npdtools/ {in_spectrum} {in_structure} --print_matches --print_spectrum --blind_search > {DATA_PATH}/psm.ann')
-    os.system(
-        f'python2.7 {NPVIS_PATH}/visualize.py  --mol {in_structure}  --ann {DATA_PATH}/psm.ann --portable_html -o {DATA_PATH}/vis_portable.html')
+def run_npvis_inline(in_spectrum, in_structure, user_session):
+    out_ann = os.path.join(DATA_PATH, user_session, "psm.ann")
+    out_vis = os.path.join(DATA_PATH, user_session, "vis_portable.html")
 
-    return f'{DATA_PATH}/vis_portable.html'
+    os.system(f'python2.7 {NPVIS_PATH}/visualize.py  --mol {in_structure}  --ann {out_ann} --portable_html -o {out_vis}')
+
+    return out_vis
 
