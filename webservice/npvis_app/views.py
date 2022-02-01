@@ -9,17 +9,8 @@ from .utils import clear_session_dir
 from .input_processing import process_structure_input
 from .input_processing import process_spectrum_input
 from .input_processing import process_error_thr
-
-def handle_form(request):
-    print(request.FILES)
-    print(request.POST)
-
-    spectrum_in, scanId = process_spectrum_input(request)
-    struct_in = process_structure_input(request)
-    error_thr, error_type = process_error_thr(request)
-
-    return spectrum_in, scanId, struct_in, error_thr, error_type
-
+from .input_processing import handle_form
+from .input_processing import process_get
 
 # Create your views here.
 def main_page(request):
@@ -27,6 +18,10 @@ def main_page(request):
     if request.method == "POST":
         clear_session_dir(request)
         spect_in, scanId, struct_in, error_thr, error_type = handle_form(request)
+        print(spect_in, scanId, struct_in, error_thr, error_type)
+        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type)
+    if request.method == "GET":
+        spect_in, scanId, struct_in, error_thr, error_type = process_get(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
         script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type)
 
