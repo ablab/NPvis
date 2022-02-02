@@ -29,7 +29,7 @@ def process_spectrum_input(request):
     return outfile, scanID
 
 def process_smiles(smiles_str, outfile):
-    cmd = f'molconvert  mol:V3 -s "{smiles_str}" > {outfile}'
+    cmd = f'molconvert  mol:V3+H -s "{smiles_str}" > {outfile}'
     os.system(cmd)
 
 
