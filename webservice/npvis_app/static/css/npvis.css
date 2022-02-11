@@ -10,11 +10,15 @@ body {
 	background: #224FC3;
 }
 
-.header div {
+.header-wrapper {
+    display: flex;
+}
+
+.header .header-wrapper .main-header {
     transform: translateY(5px);
 }
 
-.header div a {
+.header .header-wrapper .main-header a {
 	font-family: Roboto;
 	font-weight: bold;
 	font-size: 36px;
@@ -24,6 +28,18 @@ body {
 	margin-left: 20px;
 	margin-top: 10px;
     text-decoration: unset;
+}
+
+.header .header-wrapper .hdr-btn {
+    transform: translateY(12px);
+    margin-left: auto;
+}
+
+.header .header-wrapper .hdr-btn a {
+    color: #E5E5E5;
+    font-size: 21px;
+    margin: 5px;
+    text-decoration: underline;
 }
 
 .upload-sec h1 {

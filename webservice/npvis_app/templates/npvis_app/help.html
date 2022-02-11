@@ -1,0 +1,23 @@
+{% load static %}
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+        <title>NPvis</title>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/lorikeet.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/additional.css' %}" />
+        <link rel="stylesheet" href="{% static 'css/npvis.css' %}">
+        <link rel="stylesheet" href="{% static 'css/custom_dropdown.css' %}">
+    </head>
+    <body>
+
+    {% include 'npvis_app/header.html' %}
+
+	<main class="main-content"></main>
+
+    {% include 'npvis_app/footer.html' %}
+
+    </body>
+</html>

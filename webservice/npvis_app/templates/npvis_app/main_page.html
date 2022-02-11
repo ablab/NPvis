@@ -25,11 +25,8 @@
         <link rel="stylesheet" href="{% static 'css/custom_dropdown.css' %}">
     </head>
     <body>
-	<header class="header">
-        <div>
-            <a href="{% url 'main_page' %}">NPvis</a>
-        </div>
-	</header>
+
+    {% include 'npvis_app/header.html' %}
 
 	<main class="main-content">
 		<input type="checkbox" class="close-input-button" id="close-input-button-id">
@@ -123,14 +120,7 @@
         </div>
 	</main>
 
-    <footer class="footer">
-        <div class="footer_text_wrapper">
-            <p>Support:</p>
-            <b>&#128386;</b> <a class="mail" href="mailto:aleksey.gurevich@spbu.ru">aleksey.gurevich@spbu.ru</a><br>
-        </div>
-
-        <a class="copyright" href="https://cab.spbu.ru/">&copy; Center for Algorithmic Biotechnology (2022)</a>
-    </footer>
+    {% include 'npvis_app/footer.html' %}
 	
 	<script type="text/javascript">
 	    {% autoescape off %}

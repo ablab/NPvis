@@ -59,3 +59,7 @@ def downloadreport(request):
         response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
         response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
         return response
+
+
+def help_page(request):
+    return render(request, 'npvis_app/help.html')
