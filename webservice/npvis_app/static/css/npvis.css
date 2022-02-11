@@ -10,7 +10,11 @@ body {
 	background: #224FC3;
 }
 
-.header p {
+.header div {
+    transform: translateY(5px);
+}
+
+.header div a {
 	font-family: Roboto;
 	font-weight: bold;
 	font-size: 36px;
@@ -18,8 +22,8 @@ body {
 	color: #E5E5E5;
 
 	margin-left: 20px;
-	margin-top: 5px;
-	margin-bottom: 0px;
+	margin-top: 10px;
+    text-decoration: unset;
 }
 
 .upload-sec h1 {
