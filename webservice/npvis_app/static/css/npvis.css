@@ -15,13 +15,13 @@ body {
 }
 
 .header .header-wrapper .main-header {
-    transform: translateY(5px);
+    transform: translateY(0);
 }
 
 .header .header-wrapper .main-header a {
 	font-family: Roboto;
 	font-weight: bold;
-	font-size: 36px;
+	font-size: 30px;
 
 	color: #E5E5E5;
 
@@ -40,6 +40,20 @@ body {
     font-size: 21px;
     margin: 5px;
     text-decoration: underline;
+}
+
+.main-header p {
+    margin-top: 0;
+    margin-left: 20px;
+    color: #E5E5E5;
+    font-size: 14px;
+}
+
+.header .header-wrapper .main-header .hdr-link {
+    margin-top: 0;
+    margin-left: 0px;
+    color: #E5E5E5;
+    font-size: 14px;
 }
 
 .upload-sec h1 {
