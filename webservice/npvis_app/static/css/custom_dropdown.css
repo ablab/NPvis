@@ -64,6 +64,12 @@
 
 .custom-input {
     background-color: #E5E5E5;
-    width: 100px;
+    width: 75px;
     border-width: 0px;
+    height: 22px;
+    margin-right: 5px;
+}
+
+.wrapper-sml-select {
+    width: 75px;
 }
