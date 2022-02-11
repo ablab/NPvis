@@ -237,3 +237,32 @@ body {
     margin: 0;
     margin-right: 5px;
 }
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    border-top: 1px solid #C4C4C4;
+    height: 50px;
+    width: 100%;
+    z-index: 3;
+    background-color: white;
+}
+
+.footer_text_wrapper {
+    float: left;
+    margin-left: 5px;
+}
+
+.copyright {
+    position: fixed;
+    margin: 10px;
+    color: black;
+    bottom: 0;
+    right: 0;
+}
+
+.footer_text_wrapper > p {
+    color: grey;
+    font-weight: bold;
+    margin: 0;
+}
