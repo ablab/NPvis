@@ -43,13 +43,16 @@ def main_page(request):
     error_type = "absolute"
     error_thr = 0.03
     input_struct = ""
+    input_spectrum = ""
+    scanId = 0
 
     if request.method == "POST":
         clear_session_dir(request)
 
         ms_input_type = request.POST['ms_input_type']
         struct_input_type = request.POST['struct_input_type']
-        input_struct = request.POST['inputStructure']
+        input_struct = request.POST['inputStructure'] if 'inputStructure' in request.POST else ""
+        input_spectrum = request.POST['inputSpectrum'] if 'inputSpectrum' in request.POST else ""
 
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = handle_form(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
@@ -57,6 +60,8 @@ def main_page(request):
     if request.method == "GET" and ("gusi" in request.GET):
         ms_input_type = "gusi"
         struct_input_type = "smiles"
+        input_struct = request.GET["smiles"]
+        input_spectrum = request.GET["gusi"]
 
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = process_get(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
@@ -65,8 +70,10 @@ def main_page(request):
     return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str,
                                                         'mode_type': mode_type,
                                                         'ms_input_type': ms_input_type,
+                                                        'input_spectrum': input_spectrum,
                                                         'struct_input_type': struct_input_type,
                                                         'input_struct': input_struct,
+                                                        'scanid': scanId,
                                                         'error_type': error_type,
                                                         'error_thr': error_thr})
 

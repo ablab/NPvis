@@ -135,8 +135,8 @@
     <script src="{%  static 'js/dropDown.js' %}"></script>
     <script src="{%  static 'js/loadSampleData.js' %}"></script>
     <script>
-        updateSpectrumInputType();
-        updateStructureInputType("{{input_struct}}");
+        updateSpectrumInputType("{{ input_spectrum }}", {{ scanid }});
+        updateStructureInputType("{{ input_struct }}");
     </script>
 
     </body>
