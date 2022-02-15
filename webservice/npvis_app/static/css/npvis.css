@@ -5,7 +5,7 @@ body {
 .header {
 	position: fixed;
 	top: 0;
-	height: 55px;
+	height: 57px;
 	width: 100%;
 	background: #224FC3;
 }
@@ -143,7 +143,7 @@ body {
 
 .main-content {
     position: relative;
-    top: 55px;
+    top: 57px;
     width: 100%;
     margin: 0;
 }
@@ -168,7 +168,7 @@ body {
    position: fixed;
    left: 375px;
    width: calc(100% - 375px);
-   top: 55px;
+   top: 57px;
    align-items: center;
    justify-content: center;
    margin: 0;
@@ -194,7 +194,7 @@ body {
 
 .close-input-button-label {
     position: fixed;
-    top:55px;
+    top:57px;
     margin: 0;
     padding: 0;
     left: 340px;
