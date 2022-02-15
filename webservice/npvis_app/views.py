@@ -42,12 +42,14 @@ def main_page(request):
     struct_input_type = "mol"
     error_type = "absolute"
     error_thr = 0.03
+    input_struct = ""
 
     if request.method == "POST":
         clear_session_dir(request)
 
         ms_input_type = request.POST['ms_input_type']
         struct_input_type = request.POST['struct_input_type']
+        input_struct = request.POST['inputStructure']
 
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = handle_form(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
@@ -64,6 +66,7 @@ def main_page(request):
                                                         'mode_type': mode_type,
                                                         'ms_input_type': ms_input_type,
                                                         'struct_input_type': struct_input_type,
+                                                        'input_struct': input_struct,
                                                         'error_type': error_type,
                                                         'error_thr': error_thr})
 

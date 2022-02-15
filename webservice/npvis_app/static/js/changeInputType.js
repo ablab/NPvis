@@ -19,7 +19,7 @@ function updateSpectrumInputType() {
     lookAfterSelectElem();
 }
 
-function updateStructureInputType() {
+function updateStructureInputType(input_struct="") {
     var elem = document.getElementById("id_struct_input_type");
     if (elem.value === 'mol') {
         document.getElementById("struct-upload-file-id").innerHTML =
@@ -31,7 +31,7 @@ function updateStructureInputType() {
             '</div>';
     } else if (elem.value === 'smiles') {
         document.getElementById("struct-upload-file-id").innerHTML =
-                '   <input type="text" class="custom-input-text" name="inputStructure" required="" id="id_inputStructure" placeholder="SMILES string...">';
+                '   <input type="text" class="custom-input-text" name="inputStructure" required="" id="id_inputStructure" placeholder="SMILES string..." value="' + input_struct + '">';
     }
 
     lookAfterSelectElem();
