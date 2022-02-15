@@ -117,10 +117,12 @@
 		</section>
         </div>
 		
-		<div class="content-vis-wrapper">
+		{% if npvis_script != "" %}
+        <div class="content-vis-wrapper">
 		    <section class="vis-sec" id="lorikeet"></section>
             <button type="submit" class="btn right-align small-label" onclick="location.href='{% url 'downloadreport' %}'">Download report</button>
         </div>
+        {% endif %}
 	</main>
 
     {% include 'npvis_app/footer.html' %}
