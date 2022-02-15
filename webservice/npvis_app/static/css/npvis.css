@@ -65,7 +65,7 @@ body {
 }
 
 .vis-sec {
-   height: 670px;
+   /*height: 670px;*/
    width: 1200px;
    /* background: #C4C4C4; */
    margin: 10px;
@@ -172,11 +172,19 @@ body {
    align-items: center;
    justify-content: center;
    margin: 0;
+   display: grid;
+   grid-template-rows: auto 30px;
+   grid-auto-columns: minmax(calc(100% - 375px), 1200px);
 }
 
 .close-input-button:checked ~ .content-vis-wrapper {
     left: 0;
     width: 100%;
+}
+
+.dwnbtn {
+    width: 250px;
+    justify-self: end;
 }
 
 .fl_label {
