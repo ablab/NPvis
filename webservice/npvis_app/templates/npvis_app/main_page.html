@@ -91,12 +91,12 @@
                 <div class="input-section">
                     <h1>Error tolerance threshold</h1>
                     <div class="oneline">
-                        <input class="custom-input" type="number" step="0.001" value="0.02" name="error_thr">
+                        <input class="custom-input" type="number" step="0.001" value="{{error_thr}}" name="error_thr">
                         <div class = "wrapper-sml-select">
                         <div class="custom-select">
                             <select id="id_error_type" name="error_type">
-                            <option value="absolute">Da</option>
-                            <option value="relative">ppm</option>
+                            <option value="absolute" {% if error_type == "absolute" %} selected {% endif %}>Da</option>
+                            <option value="relative" {% if error_type == "relative" %} selected {% endif %}>ppm</option>
                             </select>
                         </div>
                         </div>

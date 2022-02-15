@@ -40,6 +40,8 @@ def main_page(request):
     mode_type = "PNP"
     ms_input_type = "mgf"
     struct_input_type = "mol"
+    error_type = "absolute"
+    error_thr = 0.03
 
     if request.method == "POST":
         clear_session_dir(request)
@@ -61,7 +63,9 @@ def main_page(request):
     return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str,
                                                         'mode_type': mode_type,
                                                         'ms_input_type': ms_input_type,
-                                                        'struct_input_type': struct_input_type})
+                                                        'struct_input_type': struct_input_type,
+                                                        'error_type': error_type,
+                                                        'error_thr': error_thr})
 
 
 def downloadreport(request):
