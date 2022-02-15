@@ -37,17 +37,31 @@ def main_page(request):
     user_session = get_or_create_session(request)
 
     script_str = ""
+    mode_type = "PNP"
+    ms_input_type = "mgf"
+    struct_input_type = "mol"
+
     if request.method == "POST":
         clear_session_dir(request)
+
+        ms_input_type = request.POST['ms_input_type']
+        struct_input_type = request.POST['struct_input_type']
+
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = handle_form(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
         script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, user_session)
     if request.method == "GET" and ("gusi" in request.GET):
+        ms_input_type = "gusi"
+        struct_input_type = "smiles"
+
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = process_get(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
         script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, user_session)
 
-    return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str})
+    return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str,
+                                                        'mode_type': mode_type,
+                                                        'ms_input_type': ms_input_type,
+                                                        'struct_input_type': struct_input_type})
 
 
 def downloadreport(request):

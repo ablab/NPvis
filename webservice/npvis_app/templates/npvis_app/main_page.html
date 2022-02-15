@@ -43,8 +43,8 @@
                     <h1>Mode</h1>
                     <div class="custom-select">
                         <select id="id_mode_type" name="mode_type">
-                            <option value="PNP"><p>PNP</p></option>
-                            <option value="PNPmd"><p>PNP with modification</p></option>
+                            <option value="PNP" {% if mode_type == "PNP" %} selected {% endif %}>PNP</option>
+                            <option value="PNPmd" {% if mode_type == "PNPmd" %} selected {% endif %}>PNP with modification</option>
                         </select>
                     </div>
                 </div>
@@ -53,8 +53,8 @@
 					<h1>MS/MS data</h1>
                     <div class="custom-select">
                         <select id="id_ms_input_type" name="ms_input_type">
-                            <option value="mgf">File(MGF/mzXML/mzML)</option>
-                            <option value="gusi">GNPS USI</option>
+                            <option value="mgf" {% if ms_input_type == "mgf" %} selected {% endif %}>File(MGF/mzXML/mzML)</option>
+                            <option value="gusi" {% if ms_input_type == "gusi" %} selected {% endif %}>GNPS USI</option>
                         </select>
                     </div>
 
@@ -74,8 +74,8 @@
 					<h1>Chemical Structure</h1>
                     <div class="custom-select">
                         <select id="id_struct_input_type" name="struct_input_type">
-                            <option value="mol"><p>File(MOL)</p></option>
-                            <option value="smiles"><p>SMILES</p></option>
+                            <option value="mol" {% if struct_input_type == "mol" %} selected {% endif %}>File(MOL)</option>
+                            <option value="smiles" {% if struct_input_type == "smiles" %} selected {% endif %}>SMILES</option>
                         </select>
                     </div>
 
@@ -134,6 +134,10 @@
     <script src="{%  static 'js/changeInputType.js' %}"></script>
     <script src="{%  static 'js/dropDown.js' %}"></script>
     <script src="{%  static 'js/loadSampleData.js' %}"></script>
+    <script>
+        updateSpectrumInputType();
+        updateStructureInputType();
+    </script>
 
     </body>
 </html>
