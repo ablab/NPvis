@@ -182,7 +182,7 @@ body {
 .content-vis-wrapper {
    position: fixed;
    left: 375px;
-   width: calc(100% - 375px);
+   /*width: calc(100% - 375px);*/
    top: 57px;
    align-items: center;
    justify-content: center;
@@ -194,7 +194,7 @@ body {
 
 .close-input-button:checked ~ .content-vis-wrapper {
     left: 0;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 .dwnbtn {
