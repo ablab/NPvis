@@ -66,10 +66,18 @@ body {
 
 .vis-sec {
    /*height: 670px;*/
-   width: 1200px;
+   /*width: 1200px;*/
    /* background: #C4C4C4; */
    margin: 10px;
+   overflow: scroll;
+   -ms-overflow-style: none;  /* IE and Edge */
+   scrollbar-width: none;  /* Firefox */
 }
+
+.vis-sec::-webkit-scrollbar {
+    display: none;
+}
+
 
 .oneline {
     padding-top: 10px;
