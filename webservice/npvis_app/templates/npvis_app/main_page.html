@@ -62,10 +62,10 @@
                     <div class="upload-file">
 						<button class="upload btn"> Upload </button>
 						<div class="upload-input"> Choose file... </div>
-						<input type="file" name="inputSpectrum" required="" id="id_inputSpectrum" onchange="changeFileName(this)" title = "Choose file in mgf format...">
+						<input type="file" name="file_spectrum" required="" id="id_inputSpectrum" onchange="changeFileName(this)" title = "Choose file in mgf format...">
 					</div>
                         <div class="oneline">
-                            <p class="input-name-p">Scan ID:</p> <input type="number" class="custom-input" value="0" id="id_inputScanID" name="inputScanId" min="0">
+                            <p class="input-name-p">Scan ID:</p> <input type="number" class="custom-input" value="0" id="id_inputScanID" name="scanId" min="0">
                         </div>
                     </div>
 				</div>
@@ -83,7 +83,7 @@
                     <div class="upload-file">
 						<button class="upload btn"> Upload </button>
 						<div class="upload-input"> Choose file in mol format... </div>
-						<input type="file" name="inputStructure" required="" id="id_inputStructure" onchange="changeFileName(this)"  title = "Choose file in mol format...">
+						<input type="file" name="file_structure" required="" id="id_inputStructure" onchange="changeFileName(this)"  title = "Choose file in mol format...">
 					</div>
                     </div>
 				</div>
@@ -91,7 +91,7 @@
                 <div class="input-section">
                     <h1>Error tolerance threshold</h1>
                     <div class="oneline">
-                        <input class="custom-input" type="number" step="0.001" value="{{error_thr}}" name="error_thr">
+                        <input class="custom-input" type="number" step="0.001" value="{{error_thr}}" name="error_threshold">
                         <div class = "wrapper-sml-select">
                         <div class="custom-select">
                             <select id="id_error_type" name="error_type">

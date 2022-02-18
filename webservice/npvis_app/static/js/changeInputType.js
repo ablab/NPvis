@@ -5,15 +5,15 @@ function updateSpectrumInputType(input_spectrum="", scanid=0) {
             '<div class="upload-file">' +
             '    <button class="upload btn"> Upload</button>' +
             '    <div class="upload-input"> Choose file...</div>' +
-            '    <input type="file" name="inputSpectrum" required="" id="id_inputSpectrum"' +
+            '    <input type="file" name="file_spectrum" required="" id="id_inputSpectrum"' +
             '           onChange="changeFileName(this)" title="Choose file in mgf format...">' +
             '</div>' +
             '<div class="oneline">' +
-            '    <p class="input-name-p">Scan ID:</p> <input type="number" class="custom-input" value="'+ scanid +'" id="id_inputScanID" name="inputScanId" min="0">' +
+            '    <p class="input-name-p">Scan ID:</p> <input type="number" class="custom-input" value="'+ scanid +'" id="id_inputScanID" name="scanId" min="0">' +
             '</div>';
     } else if (elem.value === 'gusi') {
         document.getElementById("spect-upload-file-id").innerHTML =
-                '   <input type="text" class="custom-input-text" name="inputSpectrum" required="" id="id_inputSpectrum" placeholder="GNPS USI..." value="' + input_spectrum + '">';
+                '   <input type="text" class="custom-input-text" name="gusi" required="" id="id_inputSpectrum" placeholder="GNPS USI..." value="' + input_spectrum + '">';
     }
 
     lookAfterSelectElem();
@@ -26,12 +26,12 @@ function updateStructureInputType(input_struct="") {
             '<div class="upload-file">' +
             '    <button class="upload btn"> Upload</button>' +
             '    <div class="upload-input"> Choose file in mol format...</div>' +
-            '    <input type="file" name="inputStructure" required="" id="id_inputStructure"' +
+            '    <input type="file" name="file_structure" required="" id="id_inputStructure"' +
             '           onChange="changeFileName(this)" title="Choose file in mol format...">' +
             '</div>';
     } else if (elem.value === 'smiles') {
         document.getElementById("struct-upload-file-id").innerHTML =
-                '   <input type="text" class="custom-input-text" name="inputStructure" required="" id="id_inputStructure" placeholder="SMILES string..." value="' + input_struct + '">';
+                '   <input type="text" class="custom-input-text" name="smiles" required="" id="id_inputStructure" placeholder="SMILES string..." value="' + input_struct + '">';
     }
 
     lookAfterSelectElem();

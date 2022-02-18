@@ -15,12 +15,12 @@ def process_spectrum_input(request):
     outfile = os.path.join(DATA_PATH, user_session, 'Spectrum.mgf')
     scanID = 0
     if request.POST['ms_input_type'] == "mgf":
-        filename = request.FILES['inputSpectrum'].name
+        filename = request.FILES['file_spectrum'].name
         outfile = os.path.join(DATA_PATH, user_session, 'Spectrum.' + filename.split('.')[-1])
-        readFile(request.FILES['inputSpectrum'], outfile)
-        scanID = request.POST["inputScanId"]
+        readFile(request.FILES['file_spectrum'], outfile)
+        scanID = request.POST["scanId"]
     elif request.POST['ms_input_type'] == "gusi":
-        gusi = request.POST['inputSpectrum']
+        gusi = request.POST['gusi']
         #gusi.replace(':', '%3A')
         #gusi_url = "https://metabolomics-usi.ucsd.edu/json/?usi1=" + gusi
         #cmd = f'wget {gusi_url} -O {os.path.join(DATA_PATH, "Spectrum.json")}'
@@ -79,16 +79,16 @@ def process_structure_input(request):
 
     outfile = os.path.join(DATA_PATH, user_session, 'Structure.mol')
     if request.POST['struct_input_type'] == 'smiles':
-        smiles_str = request.POST['inputStructure']
+        smiles_str = request.POST['smiles']
         process_smiles(smiles_str, outfile)
     elif request.POST['struct_input_type'] == 'mol':
-        readFile(request.FILES['inputStructure'], outfile)
+        readFile(request.FILES['file_structure'], outfile)
 
     return outfile
 
 
 def process_error_thr(request):
-    error_thr = float(request.POST['error_thr'])
+    error_thr = float(request.POST['error_threshold'])
     error_type = request.POST['error_type']
 
     return error_thr, error_type

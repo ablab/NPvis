@@ -5,6 +5,7 @@ from django.shortcuts import render
 import os
 import time
 from npvis.settings import DATA_PATH
+from .forms import NPvisForm
 from .run_app import run_npvis
 from .run_app import run_npvis_inline
 from .utils import get_or_create_session
@@ -51,12 +52,16 @@ def main_page(request):
 
         ms_input_type = request.POST['ms_input_type']
         struct_input_type = request.POST['struct_input_type']
-        input_struct = request.POST['inputStructure'] if 'inputStructure' in request.POST else ""
-        input_spectrum = request.POST['inputSpectrum'] if 'inputSpectrum' in request.POST else ""
+        input_struct = request.POST['smiles'] if 'smiles' in request.POST else ""
+        input_spectrum = request.POST['gusi'] if 'gusi' in request.POST else ""
 
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = handle_form(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
         script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, user_session)
+
+        form = NPvisForm(request.POST, request.FILES)
+        form.save_json(os.path.join(DATA_PATH, user_session, "form.json"))
+
     if request.method == "GET" and ("gusi" in request.GET):
         ms_input_type = "gusi"
         struct_input_type = "smiles"
@@ -66,6 +71,9 @@ def main_page(request):
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = process_get(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
         script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, user_session)
+
+        form = NPvisForm(request.GET, request.FILES)
+        form.save_json(os.path.join(DATA_PATH, user_session, "form.json"))
 
     return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str,
                                                         'mode_type': mode_type,
