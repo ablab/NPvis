@@ -152,12 +152,19 @@ body {
     position: fixed;
     width: 350px;
     left: 0;
-    height: 100%;
+    height: calc(100% - 50px - 57px - 35px);
     border-left: 2px solid #C4C4C4;
     border-right: 2px solid #C4C4C4;
     padding: 10px;
     background: white;
     z-index: 2;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.content-input-wrapper::-webkit-scrollbar {
+    display: none;
 }
 
 .close-input-button:checked ~ .content-input-wrapper {
