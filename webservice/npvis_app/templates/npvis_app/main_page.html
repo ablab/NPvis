@@ -39,16 +39,6 @@
         <div class="content-input-wrapper">
             <section class="upload-sec">
 			<form method="POST" class="upload-form" enctype="multipart/form-data"> {% csrf_token %}
-				<div class="input-section">
-                    <h1>Mode</h1>
-                    <div class="custom-select">
-                        <select id="id_mode_type" name="mode_type">
-                            <option value="PNP" {% if mode_type == "PNP" %} selected {% endif %}>PNP</option>
-                            <option value="PNPmd" {% if mode_type == "PNPmd" %} selected {% endif %}>PNP with modification</option>
-                        </select>
-                    </div>
-                </div>
-
                 <div class="input-section">
 					<h1>MS/MS data</h1>
                     <div class="custom-select">
@@ -89,8 +79,20 @@
 				</div>
 
                 <div class="input-section">
-                    <h1>Error tolerance threshold</h1>
+                    <h1>Advanced</h1>
+
                     <div class="oneline">
+                        <p>Mode:</p>
+                        <div class="custom-select mode-select">
+                            <select id="id_mode_type" name="mode_type">
+                                <option value="PNP" {% if mode_type == "PNP" %} selected {% endif %}>PNP</option>
+                                <option value="PNPmd" {% if mode_type == "PNPmd" %} selected {% endif %}>PNP with modification</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="oneline">
+                        <p>Error tolerance threshold: </p>
                         <input class="custom-input" type="number" step="0.001" value="{{error_thr}}" name="error_threshold">
                         <div class = "wrapper-sml-select">
                         <div class="custom-select">
