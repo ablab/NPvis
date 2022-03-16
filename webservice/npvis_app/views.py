@@ -48,6 +48,7 @@ def main_page(request):
     input_struct = ""
     input_spectrum = ""
     scanId = 0
+    compound_name = ""
 
     if request.method == "POST":
         clear_session_dir(request)
@@ -58,6 +59,7 @@ def main_page(request):
         input_spectrum = request.POST['gusi'] if 'gusi' in request.POST else ""
         adduct_type = request.POST['adduct_type']
         charge_val = request.POST['charge_val']
+        compound_name = request.POST['compound_name']
 
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = handle_form(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
@@ -89,7 +91,8 @@ def main_page(request):
                                                         'error_type': error_type,
                                                         'error_thr': error_thr,
                                                         'adduct_type': adduct_type,
-                                                        'charge_val': charge_val})
+                                                        'charge_val': charge_val,
+                                                        'compound_name': compound_name})
 
 
 def downloadreport(request):
