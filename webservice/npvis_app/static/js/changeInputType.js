@@ -8,8 +8,10 @@ function updateSpectrumInputType(input_spectrum="", scanid=0) {
             '    <input type="file" name="file_spectrum" required="" id="id_inputSpectrum"' +
             '           onChange="changeFileName(this)" title="Choose file in mgf format...">' +
             '</div>' +
+            '<div class="wrapper-padding">' +
             '<div class="oneline">' +
             '    <p class="input-name-p">Scan ID:</p> <input type="number" class="custom-input" value="'+ scanid +'" id="id_inputScanID" name="scanId" min="0">' +
+            '</div>' +
             '</div>';
     } else if (elem.value === 'gusi') {
         document.getElementById("spect-upload-file-id").innerHTML =

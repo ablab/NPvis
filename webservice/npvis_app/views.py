@@ -43,6 +43,7 @@ def main_page(request):
     struct_input_type = "mol"
     error_type = "absolute"
     error_thr = 0.03
+    adduct_type = "H"
     input_struct = ""
     input_spectrum = ""
     scanId = 0
@@ -54,10 +55,11 @@ def main_page(request):
         struct_input_type = request.POST['struct_input_type']
         input_struct = request.POST['smiles'] if 'smiles' in request.POST else ""
         input_spectrum = request.POST['gusi'] if 'gusi' in request.POST else ""
+        adduct_type = request.POST['adduct_type']
 
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = handle_form(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
-        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, user_session)
+        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, adduct_type, user_session)
 
         form = NPvisForm(request.POST, request.FILES)
         form.save_json(os.path.join(DATA_PATH, user_session, "form.json"))
@@ -70,7 +72,7 @@ def main_page(request):
 
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = process_get(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
-        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, user_session)
+        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, adduct_type, user_session)
 
         form = NPvisForm(request.GET, request.FILES)
         form.save_json(os.path.join(DATA_PATH, user_session, "form.json"))
@@ -83,7 +85,8 @@ def main_page(request):
                                                         'input_struct': input_struct,
                                                         'scanid': scanId,
                                                         'error_type': error_type,
-                                                        'error_thr': error_thr})
+                                                        'error_thr': error_thr,
+                                                        'adduct_type': adduct_type})
 
 
 def downloadreport(request):

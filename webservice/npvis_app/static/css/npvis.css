@@ -80,10 +80,14 @@ body {
 
 
 .oneline {
-    padding-top: 10px;
+    /*padding-top: 10px;*/
     padding-bottom: 5px;
     display: flex;
     /* grid-template-columns: auto auto;*/
+}
+
+.wrapper-padding {
+    padding-top: 10px;
 }
 
 .upload-file {

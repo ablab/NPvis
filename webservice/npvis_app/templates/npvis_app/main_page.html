@@ -54,8 +54,10 @@
 						<div class="upload-input"> Choose file... </div>
 						<input type="file" name="file_spectrum" required="" id="id_inputSpectrum" onchange="changeFileName(this)" title = "Choose file in mgf format...">
 					</div>
-                        <div class="oneline">
-                            <p class="input-name-p">Scan ID:</p> <input type="number" class="custom-input" value="0" id="id_inputScanID" name="scanId" min="0">
+                        <div class="wrapper-padding">
+                            <div class="oneline">
+                                <p class="input-name-p">Scan ID:</p> <input type="number" class="custom-input" value="0" id="id_inputScanID" name="scanId" min="0">
+                            </div>
                         </div>
                     </div>
 				</div>
@@ -99,6 +101,19 @@
                             <select id="id_error_type" name="error_type">
                             <option value="absolute" {% if error_type == "absolute" %} selected {% endif %}>Da</option>
                             <option value="relative" {% if error_type == "relative" %} selected {% endif %}>ppm</option>
+                            </select>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="oneline">
+                        <p>Adduct: </p>
+                        <div class = "wrapper-sml-select">
+                        <div class="custom-select">
+                            <select id="id_adduct_type" name="adduct_type">
+                            <option value="H" {% if adduct_type == "H" %} selected {% endif %}>H</option>
+                            <option value="Na" {% if adduct_type == "Na" %} selected {% endif %}>Na</option>
+                            <option value="K" {% if adduct_type == "K" %} selected {% endif %}>K</option>
                             </select>
                         </div>
                         </div>
