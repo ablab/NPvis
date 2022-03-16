@@ -337,6 +337,7 @@ body {
     font-size: 18px;
     margin: 0;
     margin-right: 5px;
+    color: gray;
 }
 
 .mode-select {

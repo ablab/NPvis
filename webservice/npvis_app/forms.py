@@ -18,9 +18,9 @@ class NPvisForm(forms.Form):
     file_spectrum = forms.FileField(required=False)
     file_structure = forms.FileField(required=False)
 
-    error_threshold = forms.FloatField()
+    error_threshold = forms.FloatField(required=False)
     scanId = forms.IntegerField(required=False)
-    charge_val = forms.IntegerField()
+    charge_val = forms.IntegerField(required=False)
     compound_name = forms.CharField(required=False)
     smiles = forms.CharField(required=False)
     gusi = forms.CharField(required=False)
