@@ -20,6 +20,7 @@ class NPvisForm(forms.Form):
 
     error_threshold = forms.FloatField()
     scanId = forms.IntegerField(required=False)
+    charge_val = forms.IntegerField()
     smiles = forms.CharField(required=False)
     gusi = forms.CharField(required=False)
 
