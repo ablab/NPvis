@@ -16,6 +16,7 @@ def run_npvis(in_spectrum, scanId, in_structure, error_thr, error_type, mode_typ
     cmd += f'--adduct {adduct_type} '
     cmd += f'--charge {charge_val} '
     cmd += "--blind_search " if mode_type == "PNPmd" else ""
+    cmd += "--use_input_scan " if int(scanId) > 0 else ""
     cmd += f'--scan_num {scanId} > {out_ann}'
     print(cmd)
     os.system(cmd)

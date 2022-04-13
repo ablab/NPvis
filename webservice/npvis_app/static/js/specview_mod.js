@@ -10,6 +10,7 @@ $(function() {
         var defaults = {
                 sequence: null,
                 selectedPeak: null,
+                psmInfo: null, // dict in format {mode, error_type, error_thr, error_unit}
                 spectrumInfo: null, // dict in format {filename, scan, mz, retention, charge}  //TBD: intensity
                 compoundInfo: null, // dict in format {name, formula, mass, adduct}
                 spectrum: [], // list of all MS2 peaks in format [m/z, intensity]
@@ -140,7 +141,7 @@ $(function() {
             massErrorType_ppm);
         refreshMassErrors(options);
 
-        if (options.spectrumInfo || options.compoundInfo)
+        if (options.psmInfo || options.spectrumInfo || options.compoundInfo)
             addGeneralInfoPanel(parent_container, options);
 
         var container = createContainer(parent_container);
@@ -918,12 +919,49 @@ $(function() {
         return (field || field === 0) ? (precision ? field.toFixed(precision) : field) + unit : 'N/A';
     }
 
+
+    // for replacing a long text with the "Copy" button
+    // based on https://stackoverflow.com/questions/31593297/using-execcommand-javascript-to-copy-hidden-text-to-clipboard
+    function setClipboard(value) {
+        var tempInput = document.createElement("input");
+        tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+        tempInput.value = value;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+    }
+
     // -----------------------------------------------
     // INITIALIZE THE CONTAINER
     // -----------------------------------------------
     function addGeneralInfoPanel(div, options) {
         div.append('<div id="'+elementIds.psm_general_info+'"></div>');
         var infoContainer = $("#"+ div.attr('id')+" > #"+elementIds.psm_general_info);
+
+        if (options.psmInfo) {
+            var table = '<table class="infoTable"> ';
+            table += '<thead>';
+            table += '<tr>';
+            table += '<th colspan="2">Match Info</th>';
+            table += '</tr></thead>';
+            table += '<tbody> ';
+            table += '<tr>';
+            table += '<td class="field_name"><span>Mode</span></td>';
+            table += '<td class="field_value"><span>' + trimName(processInfoField(options.psmInfo.mode)) + '</span></td>';
+            table += '</tr><tr>';
+            table += '<td class="field_name"><span>Mass error type</span></td>';
+            table += '<td class="field_value"><span>' + processInfoField(options.psmInfo.error_type) + '</span></td>';
+            table += '</tr><tr>';
+            table += '<td class="field_name"><span>Mass error threshold</span></td>';
+            table += '<td class="field_value"><span>' + processInfoField(options.psmInfo.error_thr, options.psmInfo.error_unit) + '</span></td>';
+            table += '</tr><tr>';
+            table += '<td class="field_name"><span>Parent mass error</span></td>';
+            table += '<td class="field_value"><span>' + processInfoField(options.psmInfo.parentMassError, 'Da', options.precision) + '</span></td>';
+            table += '<tr>';
+            table += '</table>';
+            infoContainer.append(table);
+        }
 
         if (options.spectrumInfo) {
             var table = '<table class="infoTable"> ';
@@ -935,6 +973,9 @@ $(function() {
             table += '<tr>';
             table += '<td class="field_name"><span>Filename</span></td>';
             table += '<td class="field_value"><span>' + trimName(processInfoField(options.spectrumInfo.filename)) + '</span></td>';
+            // TODO: make it via the Button (see below). Not working yet!
+            // table += '<td class="field_value"><button onclick="setClipboard(\'' + trimName(processInfoField(options.spectrumInfo.filename)) + '\')">Copy to Clipboard</button></td>';
+            //
             table += '</tr><tr>';
             table += '<td class="field_name"><span>Scan</span></td>';
             table += '<td class="field_value"><span>' + processInfoField(options.spectrumInfo.scan) + '</span></td>';
@@ -963,14 +1004,14 @@ $(function() {
             table += '<td class="field_name"><span>Name</span></td>';
             table += '<td class="field_value"><span>' + trimName(processInfoField(options.compoundInfo.name)) + '</span></td>';
             table += '</tr><tr>';
-            table += '<td class="field_name"><span>Mass</span></td>';
-            table += '<td class="field_value"><span>' + processInfoField(options.compoundInfo.mass, 'Da', options.precision) + '</span></td>';
-            table += '</tr><tr>';
-            table += '<td class="field_name"><span>Mass error</span></td>';
-            table += '<td class="field_value"><span>' + processInfoField(options.compoundInfo.massError, 'Da', options.precision) + '</span></td>';
+            table += '<td class="field_name"><span>SMILES</span></td>';
+            table += '<td class="field_value"><span>' + trimName(processInfoField(options.compoundInfo.SMILES)) + '</span></td>';
             table += '</tr><tr>';
             table += '<td class="field_name"><span>Formula</span></td>';
             table += '<td class="field_value"><span>' + processInfoField(options.compoundInfo.formula) + '</span></td>';
+            table += '</tr><tr>';
+            table += '<td class="field_name"><span>Mass</span></td>';
+            table += '<td class="field_value"><span>' + processInfoField(options.compoundInfo.mass, 'Da', options.precision) + '</span></td>';
             table += '</tr><tr>';
             table += '<td class="field_name"><span>Adduct</span></td>';
             table += '<td class="field_value"><span>' + processInfoField(options.compoundInfo.adduct) + '</span></td>';
