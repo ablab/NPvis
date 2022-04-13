@@ -60,10 +60,9 @@ def main_page(request):
 
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = handle_form(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
-        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, adduct_type, charge_val, user_session)
-
         form = NPvisForm(request.POST, request.FILES)
-        form.save_json(os.path.join(DATA_PATH, user_session, "form.json"))
+        form.save_json(os.path.join(DATA_PATH, user_session, "metadata.json"))
+        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, adduct_type, charge_val, user_session)
 
     if request.method == "GET" and ("gusi" in request.GET):
         ms_input_type = "gusi"
@@ -73,10 +72,9 @@ def main_page(request):
 
         spect_in, scanId, struct_in, error_thr, error_type, mode_type = process_get(request)
         print(spect_in, scanId, struct_in, error_thr, error_type)
-        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, adduct_type, charge_val, user_session)
-
         form = NPvisForm(request.GET, request.FILES)
-        form.save_json(os.path.join(DATA_PATH, user_session, "form.json"))
+        form.save_json(os.path.join(DATA_PATH, user_session, "metadata.json"))
+        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, adduct_type, charge_val, user_session)
 
     return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str,
                                                         'mode_type': mode_type,
