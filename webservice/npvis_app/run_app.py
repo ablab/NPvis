@@ -8,6 +8,9 @@ def run_npvis(in_spectrum, scanId, in_structure, error_thr, error_type, mode_typ
     out_ann = os.path.join(DATA_PATH, user_session, "psm.ann")
     out_vis = os.path.join(DATA_PATH, user_session, "vis.html")
 
+    if error_type == "relative":
+        error_thr = format(float(error_thr)/10**6, '.20f')
+
     cmd = f'{PRINT_SCORE_PATH}/print_score -C {PRINT_SCORE_PATH}/../share/npdtools/ {in_spectrum} {in_structure} '
     cmd += " --print_structure_summary "
     cmd += " --ppm " if error_type == "relative" else ""
