@@ -143,7 +143,13 @@
 			</form>
 		</section>
         </div>
-		
+
+        {% if error_page == True %}
+            <div class="content-vis-wrapper">
+                <h2 style="padding:20px; color: red;">Ooops... something went wrong! Please try again or write to aleksey.gurevich@spbu.ru</h2>
+            </div>
+        {% endif %}
+
 		{% if npvis_script != "" %}
         <div class="content-vis-wrapper">
 		    <section class="vis-sec" id="lorikeet"></section>

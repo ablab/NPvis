@@ -46,6 +46,7 @@ def main_page(request):
     input_spectrum = ""
     scanId = 0
     compound_name = ""
+    error_page = False
 
     if request.method == "POST":
         clear_session_dir(request)
@@ -62,7 +63,11 @@ def main_page(request):
         print(spect_in, scanId, struct_in, error_thr, error_type)
         form = NPvisForm(request.POST, request.FILES)
         form.save_json(os.path.join(DATA_PATH, user_session, "metadata.json"))
-        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, adduct_type, charge_val, user_session)
+        try:
+            script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, adduct_type, charge_val, user_session)
+        except:
+            script_str = ""
+            error_page = True
 
     if request.method == "GET" and ("gusi" in request.GET):
         ms_input_type = "gusi"
@@ -74,20 +79,26 @@ def main_page(request):
         print(spect_in, scanId, struct_in, error_thr, error_type)
         form = NPvisForm(request.GET, request.FILES)
         form.save_json(os.path.join(DATA_PATH, user_session, "metadata.json"))
-        script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, adduct_type, charge_val, user_session)
+        try:
+            script_str = run_npvis(spect_in, scanId, struct_in, error_thr, error_type, mode_type, adduct_type, charge_val, user_session)
+        except:
+            script_str = ""
+            error_page = True
 
-    return render(request, 'npvis_app/main_page.html', {'npvis_script': script_str,
-                                                        'mode_type': mode_type,
-                                                        'ms_input_type': ms_input_type,
-                                                        'input_spectrum': input_spectrum,
-                                                        'struct_input_type': struct_input_type,
-                                                        'input_struct': input_struct,
-                                                        'scanid': scanId,
-                                                        'error_type': error_type,
-                                                        'error_thr': error_thr,
-                                                        'adduct_type': adduct_type,
-                                                        'charge_val': charge_val,
-                                                        'compound_name': compound_name})
+    form_info = {'npvis_script': script_str,
+                 'mode_type': mode_type,
+                 'ms_input_type': ms_input_type,
+                 'input_spectrum': input_spectrum,
+                 'struct_input_type': struct_input_type,
+                 'input_struct': input_struct,
+                 'scanid': scanId,
+                 'error_type': error_type,
+                 'error_thr': error_thr,
+                 'adduct_type': adduct_type,
+                 'charge_val': charge_val,
+                 'compound_name': compound_name,
+                 'error_page': error_page}
+    return render(request, 'npvis_app/main_page.html', form_info)
 
 
 def downloadreport(request):

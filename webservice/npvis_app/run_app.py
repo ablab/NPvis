@@ -22,9 +22,11 @@ def run_npvis(in_spectrum, scanId, in_structure, error_thr, error_type, mode_typ
     cmd += "--use_input_scan " if int(scanId) > 0 else ""
     cmd += f'--scan_num {scanId} > {out_ann}'
     print(cmd)
-    os.system(cmd)
+    if os.system(cmd) != 0:
+        raise Exception("error in print score")
 
-    os.system(f'python2.7 {NPVIS_PATH}/visualize.py  --mol {in_structure}  --ann {out_ann} --metadata {in_metadata} -o {out_vis}')
+    if os.system(f'python2.7 {NPVIS_PATH}/visualize.py  --mol {in_structure}  --ann {out_ann} --metadata {in_metadata} -o {out_vis}') != 0:
+        raise Exception("error in visualization")
     
     script_str = ""
     with open(out_vis) as f:
