@@ -8,6 +8,10 @@ function loadSampleData() {
     elemms.value="gusi";
     elemms.selectedIndex = 1;
 
+    var elemMode = document.getElementById("id_mode_type");
+    elemMode.value = "PNPmd";
+    elemMode.selectedIndex = 1;
+
     lookAfterSelectElem();
     updateStructureInputType();
     updateSpectrumInputType();
@@ -16,14 +20,10 @@ function loadSampleData() {
     eleminSpec.value = "CCC(C)C1C(=O)NC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)NC(C(=O)N1)C)C(C)CC)CC(C)C)CC2=CC=CC=C2)C(C)CC)CCCCN)C(C)CC";
 
     var eleminMS = document.getElementById("id_inputSpectrum");
-    eleminMS.value = "mzspec:GNPS:GNPS-LIBRARY:accession:CCMSLIB00000839197"
+    eleminMS.value = "mzspec:GNPS:GNPS-LIBRARY:accession:CCMSLIB00000839197";
 
     var elemName = document.getElementById("id_compound_name");
-    elemName.value = "Surugamide A"
-
-    var elemMode = document.getElementById("id_mode_type");
-    elemMode.value = "PNPmd";
-    elemMode.selectedIndex = 2;
+    elemName.value = "Surugamide A";
 
     return false;
 }
