@@ -46,10 +46,11 @@ def run_npvis(in_spectrum, scanId, in_structure, error_thr, error_type, mode_typ
     return script_str
 
 def run_npvis_inline(in_spectrum, in_structure, user_session):
+    in_metadata = os.path.join(DATA_PATH, user_session, "metadata.json")
     out_ann = os.path.join(DATA_PATH, user_session, "psm.ann")
     out_vis = os.path.join(DATA_PATH, user_session, "vis_portable.html")
 
-    os.system(f'python2.7 {NPVIS_PATH}/visualize.py  --mol {in_structure}  --ann {out_ann} --portable_html -o {out_vis}')
+    os.system(f'python2.7 {NPVIS_PATH}/visualize.py  --mol {in_structure}  --ann {out_ann} --metadata {in_metadata} --portable_html -o {out_vis}')
 
     return out_vis
 
