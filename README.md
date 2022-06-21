@@ -17,7 +17,7 @@ highlights the affected PNP fragment in the interactive report. The MS/MS peaks 
 You can read more about the modification-tolerant PNP matching in [Gurevich et al, 2018](https://www.nature.com/articles/s41564-017-0094-2).
 
 
-![](img/NPvis_pipeline.png)
+![](img/pipeline.png)
 
 NPvis was developed in the [Center for Algorithmic Biotechnology (CAB)](http://cab.spbu.ru), St. Petersburg State University 
 within the [RSF 20-74-00032 project](https://cab.spbu.ru/grant/rsf-20-74-00032/).
@@ -58,7 +58,7 @@ You can use ProteoWizard's [msconvert](https://proteowizard.sourceforge.io/tools
 
 ## Output (NPvis reports)
 
-![](img/sample_NPvis_report.png)
+![](img/sample_report.png)
 
 The Figure above shows an NPvis report for the [CCMSLIB00000839197](https://gnps.ucsd.edu/ProteoSAFe/gnpslibraryspectrum.jsp?SpectrumID=CCMSLIB00000839197#%7B%7D) spectrum from the [GNPS spectral library](https://ccms-ucsd.github.io/GNPSDocumentation/gnpslibraries/) matched with 
 the [surugamide A](https://pubchem.ncbi.nlm.nih.gov/compound/71764189) structure in the "PNP with modification" mode. 
